@@ -6,4 +6,12 @@
 <br/>
  <%=@row['created_date'] %>     
 <br/>
+<h4>Ваш комментарий:</h4>
+<form action="/details/<%= @row['id'] %> " method="POST">
+  <div class="form-floating">
+  <textarea name="content" class="form-control" placeholder="Введите текст комментария" id="floatingTextarea2" style="height: 100px"></textarea>
+  <label for="floatingTextarea2"></label>
+</div>
+  <button type="submit" class="btn btn-primary">Отправка комментария</button>
+</form>
  </p>

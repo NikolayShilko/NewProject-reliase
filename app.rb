@@ -52,10 +52,21 @@ end
 end
 #универсальный обработчик urla вывод информации о посте
 get '/details/:post_id' do
+	#получаем переменную из url
 	post_id= params[:post_id]
-	
+	#получение списка постов и выбор одного поста с записью в переменную @row
 results=@db.execute 'select * from POSTS where id=?',[post_id]
 @row=results[0]
 erb :details
 #erb "информация о посте #{post_id}"
 end
+#обработчик post запросов из details.erb форма отправки комментариев к посту
+post '/details/:post_id' do
+
+post_id= params[:post_id]
+
+content= params[:content]
+
+erb "Вы ввели #{content} к посту #{post_id}"
+
+	end
