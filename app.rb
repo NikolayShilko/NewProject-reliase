@@ -66,6 +66,9 @@ get '/details/:post_id' do
 	#получение списка постов и выбор одного поста с записью в переменную @row
 results=@db.execute 'select * from POSTS where id=?',[post_id]
 @row=results[0]
+#выбор комментариев для поста
+@comments=@db.execute 'select * from Comments where post_id=? order by id',[post_id]
+
 erb :details
 #erb "информация о посте #{post_id}"
 end
@@ -78,6 +81,7 @@ content= params[:content]
 # сохранение данных в талицу бд comments
 @db.execute 'insert into Comments(content ,created_date,post_id) values (?,datetime(),?)',[content,post_id]
 
-erb "Вы ввели #{content} к посту #{post_id}"
+#erb "Вы ввели #{content} к посту #{post_id}"
 
+redirect to ('/details/'+ post_id)
 	end

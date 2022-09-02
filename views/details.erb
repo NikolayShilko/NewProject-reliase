@@ -7,6 +7,12 @@
  <%=@row['created_date'] %>     
 <br/>
 <h4>Ваш комментарий:</h4>
+<%  @comments.each do |comment|  %>
+<P>
+	<%=comment['content'] %>
+</P>
+
+<% end   %>
 <form action="/details/<%= @row['id'] %> " method="POST">
   <div class="form-floating">
   <textarea name="content" class="form-control" placeholder="Введите текст комментария" id="floatingTextarea2" style="height: 100px"></textarea>
