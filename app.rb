@@ -75,6 +75,8 @@ post '/details/:post_id' do
 post_id= params[:post_id]
 
 content= params[:content]
+# сохранение данных в талицу бд comments
+@db.execute 'insert into Comments(content ,created_date,post_id) values (?,datetime(),?)',[content,post_id]
 
 erb "Вы ввели #{content} к посту #{post_id}"
 
