@@ -27,6 +27,7 @@ configure do
 	end
 
 get '/' do
+	# запись данных из бд в переменную 
 	@results=@db.execute 'select * from POSTS order by id desc'
 	erb :index		
 end
@@ -46,5 +47,6 @@ if content.length ==0
 end
 #запись данных из формы /new в таблицу POSTS,добавлен datetime для звписи времени поста
 @db.execute 'insert into POSTS (content ,created_date) values (?,datetime())',[content]
-  erb "Вы ввели:#{content}"
+  #erb "Вы ввели:#{content}"
+  redirect to '/'
 end

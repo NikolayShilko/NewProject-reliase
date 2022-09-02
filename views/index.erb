@@ -1,6 +1,13 @@
 <h2> Введенные посты:</h2>
-<% @results.each do |result| %>
+<br/>
+<% @results.each do |result| %> <!--cорьтровка данных из переменной с бд  в представлении -->
 <p>
- <%= result['content'] %>
+ <%= result['content'] %>        <!--вывод данных из столбца content-->
+<br/>
+ <%=result['created_date'] %>     <!--вывод данных из столбца 'created_date'-->
+<br/>
+ <a href= "/post/<%= result['id'] %>">комментарий</a> <!--комментарий к постам-->
+
+
 </p>	
 <% end  %>
