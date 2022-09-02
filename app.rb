@@ -43,5 +43,7 @@ if content.length ==0
 	@error="Введите текст!"
 	return erb :new
 end
+#запись данных из формы /new в таблицу POSTS,добавлен datetime для звписи времени поста
+@db.execute 'insert into POSTS (content ,created_date) values (?,datetime())',[content]
   erb "Вы ввели:#{content}"
 end
