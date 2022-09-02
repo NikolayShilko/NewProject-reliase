@@ -24,6 +24,15 @@ configure do
 	"content"	TEXT,
 	PRIMARY KEY("id" AUTOINCREMENT)
 )';
+#таблица для комментариев Comments
+
+@db.execute 'CREATE TABLE IF NOT EXISTS "Comments" (
+	"id"	INTEGER,
+	"created_date"	DATE,
+	"content"	TEXT,
+	"post_id" INTEGER,
+	PRIMARY KEY("id" AUTOINCREMENT)
+)';	
 	end
 
 get '/' do
