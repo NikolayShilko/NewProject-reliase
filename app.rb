@@ -8,5 +8,8 @@ get '/' do
 end
 get '/Post' do
   erb :new
-
+end
+post '/new' do
+  content= params[:content]
+  "Вы ввели:#{content}"
 end
